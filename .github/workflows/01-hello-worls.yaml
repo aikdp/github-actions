@@ -1,0 +1,24 @@
+name: Hello World Workflow
+
+on:
+  push:
+    branches: [ "main" ]  # Triggers the workflow on push to the main branch
+
+# A workflow run is made up of one or more jobs
+jobs:
+  say-hello:
+    #gihub host runner
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed
+    steps:
+      # Step 1: Checks out your repository so the job can access it
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Step 2: Run a standard echo command in the runner's shell
+      - name: Run Hello World
+        run: echo "Hello, World!"
+
+      - name: Run github actions
+        run: echo "I am working on github actions"
