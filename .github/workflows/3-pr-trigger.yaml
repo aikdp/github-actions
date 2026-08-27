@@ -1,0 +1,17 @@
+name: PR-trigger
+on: 
+  pull_request:
+    types: [opened, reopened]
+jobs:
+  my-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: event trigger data
+        run: |
+          cat "$GITHUB_EVENT_PATH"
+          echo "The action was: $(jq -r '.action' "$GITHUB_EVENT_PATH")
+
+      - name: get the comment id
+        run: |
+          COMMENT_ID=$(jq '.comment.id' "$GITHUB_EVENT_PATH")
+          echo "The comment ID is $COMMENT_ID"
