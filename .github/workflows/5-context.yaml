@@ -42,4 +42,4 @@ jobs:
     steps:
       - name: Access another job objects
         run: |
-          echo "Accessing Another JOB Image Version in this JOB:: ${{ needs.first-job.outputs.image-version }}"
+          echo "Accessing Another JOB Image Version in this JOB:: ${{ needs.first-job.outputs.version }}"
