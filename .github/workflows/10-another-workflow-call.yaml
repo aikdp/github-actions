@@ -1,6 +1,7 @@
 name: call another workflow
 on:
-  push:
+  workflow_dispatch:
+  # push:
     # branches:
     #   - 'main'
 
