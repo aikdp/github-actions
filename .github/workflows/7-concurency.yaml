@@ -1,7 +1,7 @@
 name: conditions
 on: 
   push:
-  #just chnage
+  #just chnage, one
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: false # false means it will wait.
