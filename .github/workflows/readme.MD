@@ -13,4 +13,5 @@ github action triggers
 
 github actions call another workflow
 
-Read package.json version github actions
+Self hosted runners:
+Create ec2 instance and attach to github as selfhosted
