@@ -13,3 +13,8 @@ jobs:
         run: |
           echo "Project is: $project"
           echo "Environment is: $environment"
+      
+      - name: print GitHub context
+        env:
+          GITHUB_CONETXT: ${{  toJson(github) }}
+        run: echo "$GITHUB_CONETXT"
