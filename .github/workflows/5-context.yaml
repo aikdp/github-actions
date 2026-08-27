@@ -43,3 +43,9 @@ jobs:
       - name: Access another job objects
         run: |
           echo "Accessing Another JOB Image Version in this JOB:: ${{ needs.first-job.outputs.version }}"
+
+  third-job:
+    runs-on:
+      steps:
+        - name: parallel jobs
+          run: echo "This is Paralle job"
