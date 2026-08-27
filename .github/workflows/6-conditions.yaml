@@ -1,4 +1,4 @@
-name: hello-World
+name: conditions
 on: 
   push:
 jobs:
