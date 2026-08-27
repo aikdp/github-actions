@@ -10,7 +10,7 @@ jobs:
       - name: event trigger data
         run: |
           cat "$GITHUB_EVENT_PATH"
-          echo "The action was: $(jq -r '.action' "$GITHUB_EVENT_PATH")
+          echo "The action was: $(jq -r '.action' "$GITHUB_EVENT_PATH")"
 
       - name: get the comment id
         run: |
