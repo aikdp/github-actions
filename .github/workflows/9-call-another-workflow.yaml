@@ -9,4 +9,4 @@ jobs:
     uses: aikdp/workflows/.github/workflows/nodejs-eks-feature.yaml@main # Path of the  repository
     with:
       project: 'roboshop'
-      component: 'catalogue'
+      component: 'catalogue' 
