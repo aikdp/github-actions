@@ -10,5 +10,5 @@ jobs:
         run: echo "This will execute when main branch updated"
 
       - name: Check branch 
-        if: github.ref_name !== 'main'
+        if: github.ref_name != 'main'
         run: echo "This will execute when Feature branch updated"
