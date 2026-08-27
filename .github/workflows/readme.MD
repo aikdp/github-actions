@@ -12,3 +12,5 @@ Github action print job context
 github action triggers
 
 github actions call another workflow
+
+Read package.json version github actions
