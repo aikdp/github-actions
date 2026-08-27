@@ -1,0 +1,58 @@
+name: context-job
+on: 
+  push:
+env:
+  project: "roboshop"
+  component: "catalogue"
+  environment: dev
+jobs:
+  first-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: sprint env variables
+        run: |
+          echo "Project is: $project"
+          echo "Environment is: $environment"
+      
+      - name: print GitHub context
+        env:
+          GITHUB_CONETXT: ${{  toJson(github) }}
+        run: echo "$GITHUB_CONETXT"
+
+      - name: Add variables to env
+        run:  |
+          echo "course=github-actions" >> $GITHUB_ENV
+          echo "duration=10Hours" >> $GITHUB_ENV
+
+      - name: Access another step variables
+        run: |
+          echo "Course is: $course"
+          echo "I am able access the another step vars in this setp, the duration is: $duration"
+
+      - name: Application Version
+        id: app_version
+        run: |
+          echo "image-version=1.0.2" >> $GITHUB_OUTPUT
+
+      - name: Dump Job Context
+        env:
+          JOB_CONTEXT: ${{ toJson(job) }}
+        run: echo "$JOB_CONTEXT"
+
+    outputs:
+      version: "${{ steps.app_version.outputs.image-version}}"
+
+      
+  second-job:
+    runs-on: ubuntu-latest
+    needs: first-job #depend on (as 2nd job is depending on 1st job)
+    steps:
+      - name: Access another job objects
+        run: |
+          echo "Accessing Another JOB Image Version in this JOB:: ${{ needs.first-job.outputs.version }}"
+
+  third-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: parallel jobs
+        run: echo "This is Paralle job"
