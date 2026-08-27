@@ -1,0 +1,19 @@
+name: conditions
+on: 
+  push:
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false # false means it will wait.
+jobs:
+  my-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check branch 
+        if: github.ref_name == 'main'
+        run: |
+          sleep 20
+          echo "This will execute when main branch updated"
+
+      - name: Check branch 
+        if: github.ref_name != 'main'
+        run: echo "This will execute when Feature branch updated"
