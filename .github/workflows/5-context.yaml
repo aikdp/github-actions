@@ -18,3 +18,13 @@ jobs:
         env:
           GITHUB_CONETXT: ${{  toJson(github) }}
         run: echo "$GITHUB_CONETXT"
+
+      - name: Add variables to env
+        run:  |
+          echo "course=github-actions" >> $GITHUB_ENV
+          echo "duration=10Hours" >> $GITHUB_ENV
+
+      - name: Access another step variables
+        run: |
+          echo "Course is: $course"
+          echo "I am able access the another step vars in this setp, the duration is: $duration"
